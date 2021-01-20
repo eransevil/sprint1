@@ -176,10 +176,9 @@ button {
   color: red;
 }
 
-.bomb {
+/* .bomb {
   background-color: black;
-  /* display: none; */
-}
+} */
 
 .clickbomb {
   background-color: red;
