@@ -148,7 +148,7 @@ function cellClicked(elCell, i, j) {
       }
     }
     var elMsg = document.querySelector('.msg');
-    elMsg.innerHTML = 'NEVER MIND, TRY AGAIN !!!';
+    elMsg.innerHTML = 'NEVER MIND, TRY AGAIN !';
     elMsg.classList.add('failure');
     elMsg.classList.remove('hide');
   }

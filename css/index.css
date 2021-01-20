@@ -55,8 +55,6 @@ h1:nth-child(2) {
   margin: 20px;
   border-bottom: 3px solid lightgray;
   border-top: 3px solid lightgray;
-  /* align-items: center;
-  justify-content: center; */
 }
 
 button {
@@ -200,7 +198,7 @@ button {
   transition: background 1.5s;
   background: #03a679;
   color: #f0f0f0;
-}
+  line-height: 25px; }
 
 
 .failure {
