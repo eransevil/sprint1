@@ -53,13 +53,13 @@ function buildBoard() {
       gBoard[i][j] = createCell();
     }
   }
-    setMine();
-    for (var i = 0; i < gBoard.length; i++) {
-      for (var j = 0; j < gBoard[0].length; j++) {
-        pos = { i: i, j: j };
-        setMinesNegsCount(pos);
-      }
+  setMine();
+  for (var i = 0; i < gBoard.length; i++) {
+    for (var j = 0; j < gBoard[0].length; j++) {
+      pos = { i: i, j: j };
+      setMinesNegsCount(pos);
     }
+  }
   return gBoard;
 }
 
@@ -147,10 +147,7 @@ function cellClicked(elCell, i, j) {
         }
       }
     }
-    var elMsg = document.querySelector('.msg');
-    elMsg.innerHTML = 'NEVER MIND, TRY AGAIN !';
-    elMsg.classList.add('failure');
-    elMsg.classList.remove('hide');
+    gameOver();
   }
 }
 
@@ -219,6 +216,15 @@ function restart() {
   elMsg.classList.add('hide');
   document.querySelector('.ct').innerHTML = '';
   init();
+}
+
+function gameOver() {
+  clearInterval(gTimeIntervel);
+  gTimeIntervel = '';
+  var elMsg = document.querySelector('.msg');
+  elMsg.innerHTML = 'NEVER MIND, TRY AGAIN !';
+  elMsg.classList.add('failure');
+  elMsg.classList.remove('hide');
 }
 
 // function showMsg(){
