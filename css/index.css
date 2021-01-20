@@ -1,0 +1,214 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  background-color: rgb(59, 54, 54);
+}
+
+.header {
+  display: grid;
+  justify-items: center;
+}
+
+/* h1 {
+  color: #f2f2f2;
+  font-size: 75px;
+  line-height: 74px;
+  font-weight: 700;
+  margin: 0 5px 24px;
+  padding: 10px;
+  margin: 0 5px 24px;
+  font-family: 'Libre Baskerville', serif;
+} */
+
+h1:first-child {
+  color: #f2f2f2;
+  font-size: 75px;
+  line-height: 74px;
+  font-weight: 700;
+  margin: 0 5px 14px;
+  padding: 10px;
+  margin: 0 5px 24px;
+  font-family: 'Libre Baskerville', serif;
+}
+h1:nth-child(2) {
+  color: #f2f2f2;
+  font-size: 35px;
+  line-height: 35px;
+  font-weight: 350;
+  margin: 0 5px 10px;
+  padding: 10px;
+  font-family: 'Libre Baskerville', serif;
+}
+
+.game-container {
+  display: grid;
+  padding: 5px;
+  align-items: center;
+  justify-items: center;
+}
+
+.display-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 20px;
+  margin: 20px;
+  border-bottom: 3px solid lightgray;
+  border-top: 3px solid lightgray;
+  /* align-items: center;
+  justify-content: center; */
+}
+
+button {
+  width: 100px;
+  height: 30px;
+  background-color: rgb(195, 195, 195);
+  color: black;
+  font-weight: bolder;
+  border-radius: 20px 20px 20px 20px;
+}
+
+.btnRestart {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  margin-top: 15px;
+}
+
+.scoreHeader {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  margin-left: 25px;
+  text-decoration: underline;
+  color: #f2f2f2;
+  font-size: 20px;
+  line-height: 20px;
+  font-weight: 200;
+  font-family: 'Libre Baskerville', serif;
+}
+
+.timeHeader {
+  grid-column-start: 3;
+  grid-column-end: 3;
+  color: #f2f2f2;
+  text-decoration: underline;
+  margin-left: 25px;
+  font-size: 20px;
+  line-height: 20px;
+  font-weight: 200;
+  font-family: 'Libre Baskerville', serif;
+}
+
+.ct {
+  grid-column-start: 3;
+  grid-column-end: 3;
+  text-align: center;
+  padding-top: 5px;
+  color: #f2f2f2;
+  font-family: 'Libre Baskerville', serif;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+  width: 100px;
+  height: 30px;
+  background-color: rgb(195, 195, 195);
+  color: black;
+  font-weight: bolder;
+  border-radius: 10px 10px 10px 10px;
+  margin-top: 10px;
+}
+
+.score {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  text-align: center;
+  padding-top: 5px;
+  color: #f2f2f2;
+  font-family: 'Libre Baskerville', serif;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+  width: 100px;
+  height: 30px;
+  background-color: rgb(195, 195, 195);
+  color: black;
+  font-weight: bolder;
+  border-radius: 10px 10px 10px 10px;
+  margin-top: 10px;
+}
+
+.board {
+  align-items: center;
+  background-color: rgb(195, 195, 195);
+  border: 1px solid black;
+}
+
+.cell {
+  -webkit-box-shadow: inset -1px 3px 8px 5px #939494e8, 2px 5px 16px 0px #909091,
+    inset 0px 0px 19px 22px rgba(137, 137, 137, 0.66);
+  box-shadow: inset -1px 3px 8px 5px #868686, 2px 5px 16px 0px #898b8d,
+    inset 0px 0px 19px 22px rgba(137, 137, 137, 0.66);
+  border-left: 1.2px solid white;
+  border-top: 1.2px solid white;
+  text-align: center;
+  width: 45px;
+  height: 45px;
+  background-color: gray;
+  font-weight: bold;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.number-flipped {
+  text-align: center;
+  width: 45px;
+  height: 45px;
+  background-color: lightgray;
+  -webkit-box-shadow: 5px 5px 5px 0px #ffffff, inset 4px 4px 15px 0px #fffefe,
+    inset 0px 0px 0px 20px rgba(247, 247, 247, 0.75);
+  box-shadow: 0px 0px 5px 0px #ffffff, inset 4px 4px 10px 0px #ffffff,
+    inset 0px 0px 0px 20px rgba(247, 247, 247, 0.75);
+}
+
+.safe {
+  color: blue;
+}
+
+.middle {
+  color: green;
+}
+
+.dangerous {
+  color: red;
+}
+
+.bomb {
+  background-color: black;
+  /* display: none; */
+}
+
+.clickbomb {
+  background-color: red;
+  /* display: none; */
+}
+
+.checked {
+  background-color: gray;
+  width: 15px;
+}
+
+.msg {
+  width: 200px;
+  padding: 20px 30px;
+  margin: 30px;
+  text-align: center;
+  border-radius: 20px;
+  font-weight: bold;
+  transition: background 1.5s;
+  background: #03a679;
+  color: #f0f0f0;
+}
+
+
+.failure {
+  background: #ff3939;
+  color: #f0f0f0;
+}
+
+.hide {
+  display: none;
+}
