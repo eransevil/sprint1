@@ -35,24 +35,24 @@ function init() {
   document.querySelector('.bestscore').innerHTML = localStorage.getItem(
     'bestscore'
   );
-  gGame.numOfHints = 3;
   document.querySelector('.startMsg').innerHTML =
     'Select a level and start playing ';
-  gIsHintOn = false;
   document.querySelector('.smiley').innerHTML = NORMAL;
-  gMarkedCells = 0;
   document.querySelector('.score').innerHTML = 0;
+  gMarkedCells = 0;
+  gGame.numOfHints = 3;
   gLevel.size = 0;
   gLevel.mines = 0;
   gGame.numOfLife = 3;
-  gGame.isOn = true;
-  gIsFirstTurn = true;
   gGame.shownCount = 0;
   gGame.secsPassed = 0;
-  gTimeIntervel = null;
-  gIsClockStart = false;
-  gIsClockStart = false;
   gTotalMines = 0;
+  gIsHintOn = false;
+  gGame.isOn = true;
+  gIsFirstTurn = true;
+  gIsClockStart = false;
+  gIsClockStart = false;
+  gTimeIntervel = null;
   gBoard = null;
   var strLife = '';
   for (var i = 0; i < gGame.numOfLife; i++) {
@@ -60,11 +60,9 @@ function init() {
   }
   document.querySelector('.lifes').innerHTML = strLife;
   renderBoard();
-  console.log('init');
   displayHints();
   renderBoard();
 }
-console.log('init');
 
 function createCell() {
   var cell = {
@@ -142,7 +140,6 @@ function setMinesNegsCount(pos) {
 }
 
 function cellClicked(elCell, i, j) {
-  console.log('in cellClicked', gIsHintOn);
   if (!gGame.isOn) return;
   if (!gIsClockStart) startTime();
   var location = { i: i, j: j };
@@ -153,7 +150,6 @@ function cellClicked(elCell, i, j) {
     setTimeout(function () {
       closeHint(location);
       toggleHint();
-      console.log('after settimeout ', gIsHintOn);
     }, 1000);
   }
 
@@ -182,7 +178,8 @@ function cellClicked(elCell, i, j) {
   }
   //if its an empty cell
   else if (currCell.minesAroundCount === 0 && !currCell.isMine) {
-    expandShown(location);
+    // expandShown(location);
+    if (!gIsHintOn) recursionExpand(location.i, location.j);
 
     checkIfUserWin();
   } else {
@@ -359,23 +356,22 @@ function bestScore() {
   }
 }
 
-//recursion funcion work with bugs
-// function recursionExpend(i, j) { 
-//   if (i < 0 || i > gBoard.length-1 || j < 0 || j > gBoard.length-1) return; // check for bounds
-//   if (!gBoard[j][i].minesAroundCount&& !gBoard[i][j].isShown) {
-//     gBoard[i][j].isShown = true;
-//     debugger;
-//     var location = {i:i, j:j}
-//     renderCell(location, gBoard[i][j].minesAroundCount);
-//     recursionExpend(i + 1, j);
-//     recursionExpend(i - 1, j);
-//     recursionExpend(i, j - 1);
-//     recursionExpend(i, j + 1);
-
-//   } else {
-//     return;
-//   }
-// }
+// recursion funcion work with bugs
+function recursionExpand(i, j) {
+  if (i < 0 || i > gBoard.length - 1 || j < 0 || j > gBoard.length - 1) return; // check for bounds
+  if (!gBoard[i][j].minesAroundCount && !gBoard[i][j].isShown) {
+    gBoard[i][j].isShown = true;
+    // debugger;
+    var location = { i: i, j: j };
+    renderCell(location, gBoard[i][j].minesAroundCount);
+    recursionExpand(i + 1, j);
+    recursionExpand(i - 1, j);
+    recursionExpand(i, j - 1);
+    recursionExpand(i, j + 1);
+  } else {
+    return;
+  }
+}
 
 // function indexOutOfBound(location) {
 //   if (

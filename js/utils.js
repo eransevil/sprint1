@@ -4,11 +4,10 @@ function toggleHint() {
 }
 
 function declareVictory() {
-  bestScore()
+  bestScore();
   document.querySelector('.smiley').innerHTML = WIN;
   clearInterval(gTimeIntervel);
   gTimeIntervel = '';
-  console.log('victory!');
   var elMsg = document.querySelector('.msg');
   elMsg.innerHTML = 'VICTORY !!!';
   elMsg.classList.remove('hide');
@@ -33,4 +32,3 @@ function display_ct(seconds) {
     0
   );
 }
-
