@@ -358,3 +358,32 @@ function bestScore() {
       'Sorry, your browser does not support Web Storage...';
   }
 }
+
+//recursion funcion work with bugs
+// function recursionExpend(i, j) { 
+//   if (i < 0 || i > gBoard.length-1 || j < 0 || j > gBoard.length-1) return; // check for bounds
+//   if (!gBoard[j][i].minesAroundCount&& !gBoard[i][j].isShown) {
+//     gBoard[i][j].isShown = true;
+//     debugger;
+//     var location = {i:i, j:j}
+//     renderCell(location, gBoard[i][j].minesAroundCount);
+//     recursionExpend(i + 1, j);
+//     recursionExpend(i - 1, j);
+//     recursionExpend(i, j - 1);
+//     recursionExpend(i, j + 1);
+
+//   } else {
+//     return;
+//   }
+// }
+
+// function indexOutOfBound(location) {
+//   if (
+//     location.i - 1 < 0 ||
+//     location.i + 1 > gBoard.length - 1 ||
+//     location.j - 1 < 0 ||
+//     location.j + 1 > gBoard.length - 1
+//   )
+//     return true;
+//   return false;
+// }
