@@ -21,6 +21,17 @@ body {
   font-family: 'Libre Baskerville', serif;
 } */
 
+.startMsg {
+  /* color: #f2f2f2; */
+  color: #f6f9fd;
+  font-size: 35px;
+  line-height: 35px;
+  font-weight: 600;
+  margin: 0 5px 10px;
+  padding: 10px;
+  font-family: 'Courier New', monospace;
+}
+
 h1:first-child {
   color: #f2f2f2;
   font-size: 75px;
@@ -56,8 +67,20 @@ h1:nth-child(2) {
   border-bottom: 3px solid lightgray;
   border-top: 3px solid lightgray;
 }
+.easy {
+  background-color: lightgreen;
+}
+
+.medium {
+  background-color: yellow;
+}
+
+.expert {
+  background-color: red;
+}
 
 button {
+  cursor: pointer;
   width: 100px;
   height: 30px;
   background-color: rgb(195, 195, 195);
@@ -75,6 +98,7 @@ button {
 .scoreHeader {
   grid-column-start: 1;
   grid-column-end: 2;
+  grid-row: start 2;
   margin-left: 25px;
   text-decoration: underline;
   color: #f2f2f2;
@@ -82,6 +106,25 @@ button {
   line-height: 20px;
   font-weight: 200;
   font-family: 'Libre Baskerville', serif;
+}
+
+.lifes {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  color: #ec3e3e;
+  margin-left: 25px;
+  font-size: 20px;
+  line-height: 20px;
+  font-weight: 200;
+  font-family: 'Libre Baskerville', serif;
+}
+
+.hints {
+  cursor: pointer;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-end: 3;
+  margin-left: 28px;
 }
 
 .timeHeader {
@@ -113,9 +156,45 @@ button {
   margin-top: 10px;
 }
 
+.smiley {
+  grid-column-start: 2;
+  grid-column-end: 2;
+  text-align: center;
+  padding-top: 5px;
+}
+
 .score {
   grid-column-start: 1;
   grid-column-end: 2;
+  text-align: center;
+  padding-top: 5px;
+  color: #f2f2f2;
+  font-family: 'Libre Baskerville', serif;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+  width: 100px;
+  height: 30px;
+  background-color: rgb(195, 195, 195);
+  color: black;
+  font-weight: bolder;
+  border-radius: 10px 10px 10px 10px;
+  margin-top: 10px;
+}
+
+.bestscoreheade {
+  grid-row-start: 5;
+  margin-top: 14px;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  color: #f2f2f2;
+  font-size: 20px;
+  line-height: 20px;
+  font-weight: 200;
+  font-family: 'Libre Baskerville', serif;
+}
+
+.bestscore {
+  grid-column-start: 2;
+  grid-column-end: 3;
   text-align: center;
   padding-top: 5px;
   color: #f2f2f2;
@@ -189,21 +268,26 @@ button {
 }
 
 .msg {
+  cursor: pointer;
   width: 200px;
   padding: 20px 30px;
   margin: 30px;
   text-align: center;
   border-radius: 20px;
   font-weight: bold;
-  transition: background 1.5s;
   background: #03a679;
   color: #f0f0f0;
-  line-height: 25px; }
-
+  line-height: 25px;
+}
 
 .failure {
   background: #ff3939;
   color: #f0f0f0;
+}
+
+.msg:active {
+  box-shadow: 0 5px rgb(39, 33, 33);
+  transform: translateY(4px);
 }
 
 .hide {

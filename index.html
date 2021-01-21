@@ -13,16 +13,23 @@
     </div>
     <div class="game-container">
       <div class="display-container">
-        <button onclick="changeLevel(16, 2)">Beginner</button>
-        <button onclick="changeLevel(64, 12)">Medium</button>
-        <button onclick="changeLevel(144, 30)">Expert</button>
-        <button onclick="restart()" class="btnRestart">Restart</button>
-          <p class="scoreHeader">score:</p>
-          <p class="timeHeader">time:</p>
+        <button onclick="changeLevel(16, 2)" class="easy">Beginner</button>
+        <button onclick="changeLevel(64, 12)" class="medium">Medium</button>
+        <button onclick="changeLevel(144, 30)"class="expert">Expert</button>
+        <!-- <button onclick="restart()" class="btnRestart">Restart</button> -->
+        <p class="scoreHeader">score:</p>
+        <p class="lifes"></p>
+        <p onclick="toggleHint()" class="hints"></p>
+        <p class="timeHeader">time:</p>
         <div class="score"></div>
+        <div onclick="restart()" class="smiley"></div>
         <div class="ct"></div>
+        <div class="bestscoreheade">Best Time:</div>
+        <div class="bestscore"></div>
+
       </div>
       <div onclick="restart()" class="msg hide"></div>
+      <div class="startMsg"> </div>
       <table border="1" class="center" cellpadding="10">
         <tbody class="board"></tbody>
       </table>
