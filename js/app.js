@@ -215,6 +215,7 @@ function cellMarked(elCell, i, j) {
   } else {
     gBoard[i][j].isMarked = false;
     elCell.innerHTML = '';
+    document.querySelector('.score').innerHTML = --gMarkedCells;
   }
   checkIfUserWin();
 }
