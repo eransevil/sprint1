@@ -145,6 +145,7 @@ button {
 }
 
 .smiley {
+  cursor: pointer;
   grid-column-start: 2;
   grid-column-end: 2;
   text-align: center;

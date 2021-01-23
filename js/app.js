@@ -141,6 +141,7 @@ function setMinesNegsCount(pos) {
 
 function cellClicked(elCell, i, j) {
   if (!gGame.isOn) return;
+  if(gBoard[i][j].isMarked) return;
   if (!gIsClockStart) startTime();
   var location = { i: i, j: j };
 
@@ -185,6 +186,15 @@ function cellClicked(elCell, i, j) {
   } else {
     //its a bomb!
     if (gGame.numOfLife > 0) {
+      var elCell = document.getElementById(`cell-${location.i}-${location.j}`);
+      elCell.innerHTML = BOMB;
+      elCell.classList.add('number-flipped');
+      setTimeout(() => {
+        elCell.innerHTML = '';
+        elCell.classList.remove('number-flipped');
+      }, 1000);
+
+      debugger;
       if (!gIsHintOn) alertWarning();
       return;
     }
@@ -208,6 +218,7 @@ function renderCell(location, value) {
 }
 
 function cellMarked(elCell, i, j) {
+  if(gBoard[i][j].isShown)return;
   if (!gBoard[i][j].isMarked || (gBoard[i][j].isMarked && gIsHintOn)) {
     gBoard[i][j].isMarked = true;
     elCell.innerHTML = FLAG;
@@ -231,6 +242,7 @@ function closeHint(location) {
       };
       var elCell = document.getElementById(`cell-${coord.i}-${coord.j}`);
       if (!gBoard[coord.i][coord.j].isShown) {
+        if(gBoard[coord.i][coord.j].isMarked) gMarkedCells--;
         elCell.innerHTML = '';
         elCell.classList.remove('number-flipped');
         if (gBoard[coord.i][coord.j].minesAroundCount <= 1)
@@ -268,6 +280,7 @@ function alertWarning() {
   var strLife = '';
   for (var i = 0; i < gGame.numOfLife; i++) {
     strLife += LIFE;
+  }
     var elMsg = document.querySelector('.msg');
     elMsg.innerHTML = 'BE CAREFUL ! ';
     elMsg.classList.add('failure');
@@ -278,7 +291,7 @@ function alertWarning() {
       elMsg.classList.remove('failure');
       document.querySelector('.smiley').innerHTML = NORMAL;
     }, 1000);
-  }
+  
   document.querySelector('.lifes').innerHTML = strLife;
 }
 
@@ -360,9 +373,8 @@ function bestScore() {
 // recursion funcion work with bugs
 function recursionExpand(i, j) {
   if (i < 0 || i > gBoard.length - 1 || j < 0 || j > gBoard.length - 1) return; // check for bounds
-  if (!gBoard[i][j].minesAroundCount && !gBoard[i][j].isShown) {
+  if (!gBoard[i][j].minesAroundCount && !gBoard[i][j].isShown&& !gBoard[i][j].isMarked) {
     gBoard[i][j].isShown = true;
-    // debugger;
     var location = { i: i, j: j };
     renderCell(location, gBoard[i][j].minesAroundCount);
     recursionExpand(i + 1, j);
